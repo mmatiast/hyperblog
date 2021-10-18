@@ -15,7 +15,7 @@ const app = new Vue({
             localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
         },
         editarTarea: function(index){
-            this.tareas[index].estado = true;
+            this.tareas[index].estado = !this.tareas[index].estado;
             localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
         },
         eliminar: function (index){
