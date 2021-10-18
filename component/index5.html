@@ -20,20 +20,47 @@
             template: //html
             ` 
             <div>
-            <h1>numero {{ $store.state.numero }}</h1>
+            <h1>numero {{ numero }}</h1>
             <hijo></hijo>
+<<<<<<< HEAD
             <hermano></hermano>
             </div>
             `
         });
+=======
+            
+            </div>
+            `,
+            computed:{
+                ...Vuex.mapState(['numero'])
+            }
+        }),
+>>>>>>> e79a73b8815da75161cc0c6245b56b0f14d10cdf
         Vue.component('hijo',{
             template: //html
             ` 
             <div>
+<<<<<<< HEAD
             <button class="btn btn-primary" @click="$store.commit('aumentar')">sumar</button>
             <h1>numero {{ $store.state.numero }}</h1>
+=======
+            <button class="btn btn-primary" @click="aumentar(2)">suma </button>
+            <button class="btn btn-danger" @click="disminuir(2)">restar</button>
+            <button class="btn btn-success" @click="obtenerCursos">obtener cursos</button>
+            <h1>numero {{ numero }}</h1>
+                <ul  v-for="item of cursos">
+                    <li>{{item.nombre}}</li>
+                </ul>
+>>>>>>> e79a73b8815da75161cc0c6245b56b0f14d10cdf
             </div>
-            `
+            `,
+            computed:{
+                ...Vuex.mapState(['numero','cursos'])
+            },
+            methods:{
+                ...Vuex.mapMutations(['aumentar', 'disminuir' ]),
+                ...Vuex.mapActions(['obtenerCursos'])
+            }
         });
          
         Vue.component('hermano',{
@@ -48,6 +75,7 @@
         });
            
         const  store = new Vuex.Store({
+<<<<<<< HEAD
             state:{
                 numero: 10
                 
@@ -60,6 +88,28 @@
                 desminuir(state){
                     state.numero --
 
+=======
+            state:{ 
+                numero: 10,
+                cursos: []
+            },
+            mutations: {
+                aumentar(state,n){
+                    state.numero +=n
+                },
+                disminuir(state,n){
+                    state.numero -=n
+                },
+                llenarCursos(state, cursosAccion){
+                    state.cursos = cursosAccion
+                }
+            },
+            actions:{
+                obtenerCursos: async function({commit}){
+                    const data = await fetch ('cursos.json');
+                    const cursos = await data.json();
+                    commit('llenarCursos', cursos)
+>>>>>>> e79a73b8815da75161cc0c6245b56b0f14d10cdf
                 }
             }
         });

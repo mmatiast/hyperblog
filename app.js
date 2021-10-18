@@ -15,7 +15,11 @@ const app = new Vue({
             localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
         },
         editarTarea: function(index){
+<<<<<<< HEAD
             this.tareas[index].estado = !this.tareas[index].estado;
+=======
+            this.tareas[index].estado =!  this.tareas[index].estado;
+>>>>>>> e79a73b8815da75161cc0c6245b56b0f14d10cdf
             localStorage.setItem('gym-vue', JSON.stringify(this.tareas));
         },
         eliminar: function (index){
